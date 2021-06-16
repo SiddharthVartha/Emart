@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap" rel="stylesheet">
+    <title>E-mart</title>
+  </head>
+  <style>
+    .bk,
+    .sc,
+    .pn,
+    .er {
+        border: 2px solid;
+        border-color: darkblue red green yellow;
+        border-radius: 10px;
+        float: left;
+        text-align: center;
+        background-color: rgba(128, 128, 128, 0.425);
+    }
+    ul {
+        list-style: none;
+    }
+
+    li {
+        font-size: 20px;
+        margin-top: 10px;
+        width: auto;
+        cursor: grab;
+        border: 1px solid black;
+    }
+
+    .bk>h3 {
+        color: #4752f8;
+    }
+
+    .er>h3 {
+        color: rgb(241, 88, 0);
+    }
+
+    .pn>h3 {
+        color: maroon;
+    }
+
+    .sc>h3 {
+        color: rgb(0, 255, 191);
+    }
+
+    #cart {
+        height: 300px;
+        position: relative;
+        border: 2px solid;
+        border-color: darkblue red green yellow;
+        border-radius: 10px;
+        text-align: center;
+        overflow: scroll;
+        font-weight: bold;
+        color: darkred;
+        list-style: none;
+        background-color: rgba(128, 128, 128, 0.425);
+    }
+
+    #cart:hover {
+        box-shadow: 0px 5px 6px green, 5px 0px 6px red;
+    }
+    #cc {
+        color: rgb(77, 5, 17);
+        margin-top: 3px;
+    }
+    #cart #items li{
+        cursor: pointer;
+        width: max-content;
+        position: relative;
+    }
+    #cart #items span{
+        position: absolute;
+    }
+    #btn {
+        font-family: 'Berkshire Swash', cursive;
+        background-color: crimson;
+        font-weight: bold;
+    }
+    body{
+        background-image: url("https://download.logo.wine/logo/E-mart/E-mart-Logo.wine.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        font-family: 'Berkshire Swash', cursive;
+    }
+    @media screen and (max-width:500px) {
+        body{
+            background-color: black;
+            color: rgb(67, 206, 25);
+            background-size:400px;
+            margin-left: 25px;
+            margin-right: 25px;
+        }
+        #cc{
+            color: gold;
+        }
+    }
+  </style>
+  <body>
+    <div class="container">
+        <div class="row ">
+            <div  class="bk    col-md-6 col-lg-3 d-inline-block ">
+                <h3>BOOKS</h3>
+                <ul id="bko">
+                    <li value="300">Engineering Mechanics</li>
+                    <li value="250">Basic Electrical & Electronics Engg</li>
+                    <li value="250">Applied Mathematics 1</li>
+                    <li value="100">Applied Physics 1</li>
+                    <li value="100">Applied Chemistry 1</li>
+                    <li value="70">Environmental studies</li>
+                </ul>
+            </div>
+            <div  class="er   col-md-6 col-lg-3 d-inline-block ">
+                <h3>ERASER</h3>
+                <ul id="ero">
+                    <li value="20">Gum eraser</li>
+                    <li value="10">Rubber eraser</li>
+                    <li value="3">Pencil eraser</li>
+                    <li value="30">Vinyl eraser</li>
+                    <li value="50">Pen eraser</li>
+                </ul>
+            </div>
+            <div  class="pn    col-md-6 col-lg-3 d-inline-block">
+                <h3>PENS</h3>
+                <ul id="pno">
+                    <li value="5">Ballpoint pen</li>
+                    <li value="10">Rollerball pen</li>
+                    <li value="20">Felt-tip pen</li>
+                    <li value="15">Gel pen</li>
+                    <li value="50">Marker pens</li>
+                    <li value="50">Stylus pens</li>
+                </ul>
+            </div>
+            <div class="sc    col-md-6  col-lg-3   d-inline-block">
+                <h3>SCALE</h3>
+                <ul id="sco">
+                    <li value="30">Steel</li>
+                    <li value="10">Plastic</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row  justify-content-center ">
+            <div id="cart" class=" col-md-6 col-lg-3  d-inline-block">
+                <ul id="items"></ul>
+            </div>
+            <h1 id="cc" class="d-flex justify-content-center">SHOPPING CART</h1>
+            <button id="btn" class="w-auto d-flex d-inline-block justify-content-center">YOUR BILL</button>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.4/themes/dark-hive/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var val = [];
+        var temp;
+        $('#ero li').draggable({
+            helper: "clone"
+        });
+        $('#sco li').draggable({
+            helper: "clone"
+        });
+        $('#pno li').draggable({
+            helper: "clone"
+        });
+        $('#bko li').draggable({
+            helper: "clone"
+        });
+        $('#cart').droppable({
+            drop: function (event, ui) {
+                $("#items").append($("<li></li>").text(ui.draggable.text()));
+                temp = ui.draggable.attr("value");
+                val.push(temp);
+                $("#items li").dblclick(function(){
+                    $(this).remove()
+                    val=$.grep(val, function(value) {
+                        return value != temp;
+                    });
+                })
+            }
+        });
+        $('#btn').click(function () {
+            var bill = 0;
+            var index;
+            for (index = 0; index < val.length; index++) {
+                bill = bill + Number(val[index]);
+            }
+            let utter = new SpeechSynthesisUtterance();
+            utter.lang = 'en-US';
+            utter.text = " YOUR BILL IS :" + bill + "$";
+            utter.volume = 0.5;
+            window.speechSynthesis.speak(utter);
+            alert("YOUR BILL IS :" + bill + "$");
+            $('#items li').remove();
+            location.reload();
+        });
+        
+        $("body").on(scrollY,function(){
+            var element = document.getElementById("bdy");
+            element.scrollTop = element.scrollHeight;
+        });
+    });
+</script>
+</html>
